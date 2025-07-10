@@ -586,6 +586,31 @@
           'event_label': 'WhatsApp'
         });
       });
+
+      // Captura global de clics en la landing page
+      document.addEventListener('click', function(event) {
+        let el = event.target;
+        // Busca el elemento interactivo más cercano
+        while (el && !el.tagName.match(/^(A|BUTTON)$/i) && !el.dataset.trackClick) {
+          el = el.parentElement;
+        }
+        if (el) {
+          let label = '';
+          if (el.id) {
+            label = `ID: ${el.id}`;
+          } else if (el.className) {
+            label = `Class: ${el.className}`;
+          } else if (el.innerText) {
+            label = `Text: ${el.innerText.substring(0, 30)}`;
+          } else {
+            label = el.tagName;
+          }
+          gtag('event', 'click', {
+            'event_category': 'Landing',
+            'event_label': label
+          });
+        }
+      }, true);
     </script>
 </body>
 </html>
