@@ -441,6 +441,14 @@
             }
         }
     </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4FTMLBMVRD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4FTMLBMVRD');
+    </script>
 </head>
 <body>
     <div class="container">
@@ -551,16 +559,33 @@
         <div class="cta-section">
             <h2>Quiero Cuidar Sin Invadir</h2>
             <p>Recibe acceso anticipado y sé de los primeros en probar el jardín familiar.</p>
-            <button class="cta-button">SOLICITAR ACCESO</button>
+            <button class="cta-button" id="btn-solicitar-acceso">SOLICITAR ACCESO</button>
         </div>
 
         <footer class="footer">
-            <div class="whatsapp-contact" onclick="window.open('https://wa.me/5731851419123', '_blank')">
+            <div class="whatsapp-contact" id="btn-whatsapp" onclick="window.open('https://wa.me/5731851419123', '_blank')">
                 <div class="whatsapp-icon">💬</div>
                 <div class="whatsapp-text">¿Tienes dudas? Escríbenos por WhatsApp al +57 318 514 19123</div>
             </div>
             <p>Javier D. Fajardo R.</p>
         </footer>
     </div>
+    <script>
+      // Botón Solicitar Acceso
+      document.getElementById('btn-solicitar-acceso').addEventListener('click', function() {
+        gtag('event', 'click', {
+          'event_category': 'CTA',
+          'event_label': 'Solicitar Acceso'
+        });
+      });
+
+      // Botón WhatsApp
+      document.getElementById('btn-whatsapp').addEventListener('click', function() {
+        gtag('event', 'click', {
+          'event_category': 'CTA',
+          'event_label': 'WhatsApp'
+        });
+      });
+    </script>
 </body>
 </html>
